@@ -1,0 +1,59 @@
+<html>
+
+	<head>
+		<title>Login page</title>
+		<meta name="Login Page" content="width=device-width, initial-scale=1.0">
+		<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+		<link href="../static/css/signup.css" rel="stylesheet">
+	</head>
+
+
+	<body>
+		<div class="container">
+			<div class="header">
+				<nav>
+				<ul class="nav nav-pills pull-right">
+					<li role="presentation" ><a href="/">Home</a></li>
+					<li role="presentation" class="active"><a href="/register">Register</a></li>
+					<li role="presentation" ><a href="/reregister">Re-Register</a></li>
+				</ul>
+				</nav>
+				<h3 class="text-muted">Login Page</h3>
+			</div>
+
+			<div class="jumbotron">
+				<h2>Please Login</h2><br>
+				<form class="form-signin" method="POST">
+					<label for="inputEmail" class="sr-only">User ID</label>
+					<input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="User ID" required autofocus>
+					<br>
+					<label for="inputPassword" class="sr-only">Password</label>
+					<input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>   
+					<br>
+					<button id="btnUploadBio" class="btn btn-lg btn-danger btn-block" type="button">Upload Biometric</button>
+					<button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button">Login</button>
+					<br> <br>
+					<!-- <label for="inputBio" class="sr-only">Biometric</label>
+					<input type="password" name="inputBio" id="inputBio" class="form-control" placeholder="Biometric" required> -->   
+					<!-- <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="submit">Login</button> -->
+					<input id="bio_flag" value="0" type="hidden"/>
+				</form>
+			
+				<p id="client_computations"></p>
+
+				{% if error %}
+					<p class="error"><strong>Error:</strong> {{ error }}</p>
+				{% endif %}
+
+			</div>
+				
+			
+		</div>
+
+		<script src="../static/js/jquery-1.11.2.js"></script>
+		<script src="../static/js/md5.min.js"></script>
+		<script src="../static/js/signin.js"></script>
+
+	</body>
+</html>
