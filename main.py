@@ -78,6 +78,7 @@ def login_submit():
 
 	packet=[ { 'rbi':_rbi, 'c1':_c1, 'c2':_c2, 'c3':_c3, 'c4':_c4, 'c5':_c5}]
 	pkt = json.dumps(packet)
+	print packet
 	# time.sleep(20)
 	# print packet
 	return pkt
@@ -94,10 +95,10 @@ def server_compute():
 	email_address = request.form['email_address']
 
 	print "\n\n\n"
-	print c1
-	print c2
-	print c5
-	print ei
+	print "c1 | " + c1
+	print "c2 | " + c2
+	print "c5 | " + c5
+	print "ei | " + ei
 	print "\n\n\n"
 	
 	x = str(get_random())
@@ -144,6 +145,46 @@ def server_compute():
 	}
 
 	return jsonify(**resp)
+
+@app.route("/server-compute-register", methods=['POST'])
+def server_compute_register():
+	_id = request.form['id']
+	ri = request.form['ri']
+	hi = request.form['hi']
+
+	print "\n\n\n"
+	print "id | " + _id
+	print "hi | " + hi
+	print "ri | " + ri
+	print "\n\n\n"
+	
+	ei = str(get_random())
+	x = str(get_random())
+	p = str(get_random())
+	B1 = sxor( hash(_id + x + ei), hi)
+	B1 = sxor( B1, hash(_id + ei))
+	B2 = sxor( hash(_id+x) , hi)  
+
+	print "USER REGISTERED!"
+	print "Computing..."
+	print "Computation complete"
+	print "B1 | " + B1
+	print "B2 | " + B2
+	print "ei | " + ei
+	print "p  | " + p
+	print "\n\n"
+	
+	resp = {
+		"B1" : B1,
+		"B2" : B2,
+		"ei" : ei,
+		"p" : p,
+		"ri" : ri,
+	}
+
+	return jsonify(**resp)
+
+
 
 if __name__ == "__main__" :
 	app.run(debug=True, host="0.0.0.0", threaded=True)

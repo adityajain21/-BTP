@@ -20,10 +20,11 @@ function call_for_server_check(params, c3, ui){
         success: function(response){
             // $(".jumbotron").hide(500);
             console.log(response);
-            console.log(response['c10'])
+            console.log("c10 | " + response['c10'])
             var c9c = c3 ^ ui;
             var e1c = response['c8'];
             var c10c = md5(email_address + response['c6'] + response['c8'] + c9c + response['key'] + e1c);
+            alert("USER LOGGED IN SUCCESSFULLY!");
         }
     });
 }
@@ -57,11 +58,11 @@ $('#btnSignUp').click(function(){
 
 
 
-    console.log(c1);
-    console.log(c2);
-    console.log(c3);
-    console.log(c4);
-    console.log(c5);
+    console.log("c1 | " + c1);
+    console.log("c2 | " + c2);
+    console.log("c3 | " + c3);
+    console.log("c4 | " + c4);
+    console.log("c5 | " + c5);
 
 
     if($("#bio_flag").val() != 1){
@@ -84,6 +85,7 @@ $('#btnSignUp').click(function(){
                 // $("#client_computations").val(new_message);
                 wait(1000);
                 call_for_server_check(params, c3, ui);
+
             },
             error: function(error) {
                 console.log(error);

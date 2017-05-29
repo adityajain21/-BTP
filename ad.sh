@@ -1,2 +1,2 @@
-echo "ADITYA JAIN!!!!!!"
+echo "CAMERA OPEN"
 cheese
